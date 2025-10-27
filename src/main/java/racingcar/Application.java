@@ -2,6 +2,7 @@ package racingcar;
 
 import racingcar.domain.Cars;
 import racingcar.domain.MoveStrategy;
+import racingcar.domain.RandomMoveStrategy;
 import racingcar.domain.TryCount;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -11,7 +12,7 @@ public class Application {
         try {
             Cars cars = InputView.inputCarNames();
             TryCount tryCount = InputView.inputTryCount();
-            MoveStrategy strategy = new MoveStrategy();
+            MoveStrategy strategy = new RandomMoveStrategy();
 
             OutputView.printRaceResultIntro();
 
