@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import racingcar.exception.InvalidCarNameException;
 
 public class Cars {
@@ -27,16 +28,16 @@ public class Cars {
         }
     }
 
-    public List<Car> findWinners() {
+    public Winners findWinners() {
         long maxPosition = findMaxPosition();
 
-        List<Car> winners = new ArrayList<>();
+        List<Car> winnerList = new ArrayList<>();
         for (Car car : cars) {
             if (car.position() == maxPosition) {
-                winners.add(car);
+                winnerList.add(car);
             }
         }
-        return winners;
+        return new Winners(winnerList);
     }
 
     private long findMaxPosition() {

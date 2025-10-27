@@ -43,6 +43,9 @@
     - [x] CarsTest: 가장 멀리 간 단일 우승자를 정확히 찾는다
     - [x] CarsTest:가장 멀리 간 공동 우승자들을 정확히 찾는다
     - [x] TryCountTest: 숫자 문자열을 입력하면 정상적으로 숫자로 처리된다
+    - [x] WinnersTest: 단일 우승자 이름을 정확히 반환한다
+    - [x] WinnersTest: 공동 우승자 이름을 쉼표로 구분하여 반환한다
+    - [x] WinnersTest: 우승자 목록을 불변으로 반환한다
     - [x] ApplicationTest: 사용자 입력과 랜덤 수에 따라 게임이 정상적으로 실행된다
     - [x] ApplicationTest: 게임 결과로 단일 우승자가 정상적으로 출력된다
     - [x] ApplicationTest: 게임 결과로 공동 우승자가 정상적으로 출력된다
@@ -71,3 +74,7 @@
     - main(): 진입점 역할만 수행하도록 단순화
     - run(): 입력 → 비즈니스 로직 → 출력의 전체 흐름 제어
     - playRacing(): 경주 반복 실행만 담당하도록 분리
+- [x] Winners 일급 컬렉션을 도입하여 우승자 목록을 객체로 캡슐화
+    - Cars.findWinners()의 반환 타입을 List<Car>에서 Winners로 변경하여 도메인 모델의 일관성 강화
+    - 기존에 OutputView에서 모두 처리하던 우승자 관련 로직 중 이름 조합 로직은 Winners로 이동, 출력은 OutputView에서 수행하도록 역할을 분리
+    - Cars의 책임을 단순화하고, 우승자 관리 및 표현 책임을 Winners로 위임하여 응집도 향상

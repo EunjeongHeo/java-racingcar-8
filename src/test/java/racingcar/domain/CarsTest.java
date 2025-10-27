@@ -1,9 +1,9 @@
 package racingcar.domain;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
-import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class CarsTest {
@@ -42,9 +42,9 @@ class CarsTest {
         moveCarNTimes(cars.getCars().get(1), 2);
         moveCarNTimes(cars.getCars().get(2), 1);
 
-        List<Car> winners = cars.findWinners();
+        Winners winners = cars.findWinners();
 
-        assertThat(winners)
+        assertThat(winners.getCars())
                 .hasSize(1)
                 .extracting(Car::name)
                 .containsExactly("pobi");
@@ -59,9 +59,9 @@ class CarsTest {
         moveCarNTimes(cars.getCars().get(1), 3);
         moveCarNTimes(cars.getCars().get(2), 2);
 
-        List<Car> winners = cars.findWinners();
+        Winners winners = cars.findWinners();
 
-        assertThat(winners)
+        assertThat(winners.getCars())
                 .hasSize(2)
                 .extracting(Car::name)
                 .containsExactly("pobi", "woni");
