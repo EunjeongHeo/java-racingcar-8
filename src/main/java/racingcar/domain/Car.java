@@ -8,6 +8,7 @@ public class Car {
     private static final int MIN_NAME_LENGTH = 1;
 
     private final String name;
+    private long position = 0;
 
     public Car(String name) {
         validateNameRule(name);
@@ -18,7 +19,21 @@ public class Car {
         validateNotBlank(name);
         validateLength(name);
     }
-    
+
+    public void move(MoveStrategy strategy) {
+        if (strategy.isMovable()) {
+            position++;
+        }
+    }
+
+    public String name() {
+        return name;
+    }
+
+    public long position() {
+        return position;
+    }
+
     private void validateNotBlank(String name) {
         if (name == null || name.isBlank()) {
             throw new InvalidCarNameException("자동차 이름은 공백일 수 없습니다.");

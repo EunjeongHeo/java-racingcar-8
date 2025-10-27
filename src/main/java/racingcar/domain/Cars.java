@@ -47,4 +47,10 @@ public class Cars {
                 .map(Car::new)
                 .toList();
     }
+
+    public void race(MoveStrategy strategy) {
+        for (Car car : cars) {
+            car.move(strategy);
+        }
+    }
 }
