@@ -78,3 +78,5 @@
     - Cars.findWinners()의 반환 타입을 List<Car>에서 Winners로 변경하여 도메인 모델의 일관성 강화
     - 기존에 OutputView에서 모두 처리하던 우승자 관련 로직 중 이름 조합 로직은 Winners로 이동, 출력은 OutputView에서 수행하도록 역할을 분리
     - Cars의 책임을 단순화하고, 우승자 관리 및 표현 책임을 Winners로 위임하여 응집도 향상
+- [x] Cars.findWinners() 함수 내 로직을 더 작게 분리
+    - findWinners() 을 findMaxPosition() 와 filterCarsByPosition() 으로 책임을 명확히 분리함

@@ -1,11 +1,9 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import racingcar.exception.InvalidCarNameException;
 
 public class Cars {
@@ -30,13 +28,7 @@ public class Cars {
 
     public Winners findWinners() {
         long maxPosition = findMaxPosition();
-
-        List<Car> winnerList = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.position() == maxPosition) {
-                winnerList.add(car);
-            }
-        }
+        List<Car> winnerList = filterCarsByPosition(maxPosition);
         return new Winners(winnerList);
     }
 
@@ -48,6 +40,12 @@ public class Cars {
             }
         }
         return max;
+    }
+
+    private List<Car> filterCarsByPosition(long targetPosition) {
+        return cars.stream()
+                .filter(car -> car.position() == targetPosition)
+                .toList();
     }
 
     private List<String> parseToList(String input) {
