@@ -47,8 +47,18 @@
     - [x] ApplicationTest: 게임 결과로 단일 우승자가 정상적으로 출력된다
     - [x] ApplicationTest: 게임 결과로 공동 우승자가 정상적으로 출력된다
 
-- [ ] 실패 케이스에 대한 테스트 코드를 추가한다
-    - [ ] 자동차 이름이 6자 이상인 경우 → `IllegalArgumentException` 발생
-    - [ ] 자동차 이름이 비어 있는 경우 → `IllegalArgumentException` 발생
-    - [ ] 횟수 입력이 숫자가 아닌 경우 → `IllegalArgumentException` 발생
-    - [ ] 횟수 입력이 허용된 숫자 범위를 벗어난 경우 → `IllegalArgumentException` 발생
+- [x] 실패 케이스에 대한 테스트 코드를 추가한다
+    - [x] CarTest: 자동차 이름이 빈 문자열일 경우 → `IllegalArgumentException` 발생
+    - [x] CarTest: 자동차 이름이 null일 경우 → `IllegalArgumentException` 발생
+    - [x] CarTest: 자동차 이름이 5자를 초과할 경우 → `IllegalArgumentException` 발생
+    - [x] CarTest: 자동차 이름이 공백만 있는 경우 → `IllegalArgumentException` 발생
+    - [x] CarsTest: 자동차 이름 목록에 중복된 이름이 있을 경우 → `IllegalArgumentException` 발생
+    - [x] CarsTest: 자동차 이름 입력이 없을 경우 → `IllegalArgumentException` 발생
+    - [x] TryCountTest: 음수를 입력한 경우 → `IllegalArgumentException` 발생
+    - [x] TryCountTest: 0을 입력한 경우 → `IllegalArgumentException` 발생
+    - [x] TryCountTest: 숫자가 아닌 문자를 입력한 경우 → `IllegalArgumentException` 발생
+    - [x] TryCountTest: Long 범위를 초과한 수를 입력한 경우 → `IllegalArgumentException` 발생
+    - [x] ApplicationTest: 자동차 이름 입력이 비어 있는 경우 → `IllegalArgumentException` 발생
+    - [x] ApplicationTest: 자동차 이름 중 빈 값(,,)을 포함한 경우 → `IllegalArgumentException` 발생
+    - [x] ApplicationTest: 시도 횟수에 음수를 입력한 경우 → `IllegalArgumentException` 발생
+    - [x] ApplicationTest: 시도 횟수에 Long 범위를 초과한 수를 입력한 경우 → `IllegalArgumentException` 발생

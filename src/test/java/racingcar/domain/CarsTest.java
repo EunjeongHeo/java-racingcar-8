@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -64,6 +65,18 @@ class CarsTest {
                 .hasSize(2)
                 .extracting(Car::name)
                 .containsExactly("pobi", "woni");
+    }
+
+    @Test
+    void 중복된_이름이_포함되면_예외가_발생한다() {
+        assertThatThrownBy(() -> new Cars("pobi,woni,pobi"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 입력된_이름이_없으면_예외가_발생한다() {
+        assertThatThrownBy(() -> new Cars(""))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     private void moveCarNTimes(Car car, int times) {

@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
@@ -30,6 +31,30 @@ public class CarTest {
         car.move(() -> false);
 
         assertThat(car.position()).isZero();
+    }
+
+    @Test
+    void 이름이_빈값이면_예외가_발생한다() {
+        assertThatThrownBy(() -> new Car(""))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 이름이_null이면_예외가_발생한다() {
+        assertThatThrownBy(() -> new Car(null))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 이름이_5자를_초과하면_예외가_발생한다() {
+        assertThatThrownBy(() -> new Car("toolongname"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 이름이_0자이면_예외가_발생한다() {
+        assertThatThrownBy(() -> new Car(" "))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
 
