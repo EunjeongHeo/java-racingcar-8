@@ -19,6 +19,8 @@ public class Application {
                 cars.race(strategy);
                 OutputView.printEachRoundResult(cars.getCars());
             }
+
+            OutputView.printWinners(cars.findWinners());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

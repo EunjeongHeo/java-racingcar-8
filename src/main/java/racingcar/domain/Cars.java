@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -24,6 +25,28 @@ public class Cars {
         for (Car car : cars) {
             car.move(strategy);
         }
+    }
+
+    public List<Car> findWinners() {
+        long maxPosition = findMaxPosition();
+
+        List<Car> winners = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.position() == maxPosition) {
+                winners.add(car);
+            }
+        }
+        return winners;
+    }
+
+    private long findMaxPosition() {
+        long max = 0;
+        for (Car car : cars) {
+            if (car.position() > max) {
+                max = car.position();
+            }
+        }
+        return max;
     }
 
     private List<String> parseToList(String input) {
