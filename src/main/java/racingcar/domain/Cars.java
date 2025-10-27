@@ -11,12 +11,12 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(String input) {
-        List<String> names = parseInput(input);
+        List<String> names = parseToList(input);
         validateInputFormat(names);
         this.cars = mapToCars(names);
     }
 
-    private List<String> parseInput(String input) {
+    private List<String> parseToList(String input) {
         return Arrays.stream(input.split(","))
                 .map(String::trim)
                 .toList();
