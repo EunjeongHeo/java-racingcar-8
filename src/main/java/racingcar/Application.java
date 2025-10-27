@@ -10,21 +10,27 @@ import racingcar.view.OutputView;
 public class Application {
     public static void main(String[] args) {
         try {
-            Cars cars = InputView.inputCarNames();
-            TryCount tryCount = InputView.inputTryCount();
-            MoveStrategy strategy = new RandomMoveStrategy();
-
-            OutputView.printRaceResultIntro();
-
-            for (long i = 0; i < tryCount.value(); i++) {
-                cars.race(strategy);
-                OutputView.printEachRoundResult(cars.getCars());
-            }
-
-            OutputView.printWinners(cars.findWinners());
+            run();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             throw e;
+        }
+    }
+
+    private static void run() {
+        Cars cars = InputView.inputCarNames();
+        TryCount tryCount = InputView.inputTryCount();
+        MoveStrategy strategy = new RandomMoveStrategy();
+
+        playRacing(cars, tryCount, strategy);
+        OutputView.printWinners(cars.findWinners());
+    }
+
+    private static void playRacing(Cars cars, TryCount tryCount, MoveStrategy strategy) {
+        OutputView.printRaceResultIntro();
+        for (long i = 0; i < tryCount.value(); i++) {
+            cars.race(strategy);
+            OutputView.printEachRoundResult(cars.getCars());
         }
     }
 }

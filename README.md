@@ -62,3 +62,12 @@
     - [x] ApplicationTest: 자동차 이름 중 빈 값(,,)을 포함한 경우 → `IllegalArgumentException` 발생
     - [x] ApplicationTest: 시도 횟수에 음수를 입력한 경우 → `IllegalArgumentException` 발생
     - [x] ApplicationTest: 시도 횟수에 Long 범위를 초과한 수를 입력한 경우 → `IllegalArgumentException` 발생
+
+---
+
+## 리팩토링 목록
+
+- [x] main 메서드의 책임을 실행 흐름 담당 run() 메서드와 경주 담당 playRacing() 메서드로 분리
+    - main(): 진입점 역할만 수행하도록 단순화
+    - run(): 입력 → 비즈니스 로직 → 출력의 전체 흐름 제어
+    - playRacing(): 경주 반복 실행만 담당하도록 분리
