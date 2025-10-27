@@ -1,7 +1,14 @@
 package racingcar;
 
+import racingcar.domain.Cars;
+import racingcar.view.InputView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        try {
+            Cars cars = InputView.inputCarNames();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

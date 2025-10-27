@@ -1,0 +1,50 @@
+package racingcar.domain;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import racingcar.exception.InvalidCarNameException;
+
+public class Cars {
+
+    private final List<Car> cars;
+
+    public Cars(String input) {
+        List<String> names = parseInput(input);
+        validateInputFormat(names);
+        this.cars = mapToCars(names);
+    }
+
+    private List<String> parseInput(String input) {
+        return Arrays.stream(input.split(","))
+                .map(String::trim)
+                .toList();
+    }
+
+    private void validateInputFormat(List<String> names) {
+        validateInputNotEmpty(names);
+        validateInputNoDuplicate(names);
+    }
+
+    private void validateInputNotEmpty(List<String> names) {
+        if (names.isEmpty()) {
+            throw new InvalidCarNameException("입력된 값이 없습니다.");
+        }
+    }
+
+    private void validateInputNoDuplicate(List<String> names) {
+        Set<String> uniqueNames = new HashSet<>();
+        for (String name : names) {
+            if (!uniqueNames.add(name)) {
+                throw new InvalidCarNameException("중복해서 입력할 수 없습니다.");
+            }
+        }
+    }
+
+    private List<Car> mapToCars(List<String> names) {
+        return names.stream()
+                .map(Car::new)
+                .toList();
+    }
+}
