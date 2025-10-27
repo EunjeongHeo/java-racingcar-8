@@ -18,10 +18,9 @@ public class Application {
     }
 
     private static void run() {
-        Cars cars = InputView.inputCarNames();
-        TryCount tryCount = InputView.inputTryCount();
+        Cars cars = new Cars(InputView.inputCarNames());
+        TryCount tryCount = new TryCount(InputView.inputTryCount());
         MoveStrategy strategy = new RandomMoveStrategy();
-
         playRacing(cars, tryCount, strategy);
         OutputView.printWinners(cars.findWinners());
     }

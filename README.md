@@ -80,3 +80,7 @@
     - Cars의 책임을 단순화하고, 우승자 관리 및 표현 책임을 Winners로 위임하여 응집도 향상
 - [x] Cars.findWinners() 함수 내 로직을 더 작게 분리
     - findWinners() 을 findMaxPosition() 와 filterCarsByPosition() 으로 책임을 명확히 분리함
+- [x] InputView의 단일 책임 원칙(SRP) 준수를 위한 리팩토링
+    - InputView 메서드들이 입출력만 담당하도록 수정 (도메인 객체 생성 제거)
+    - 반환 타입을 Cars, TryCount에서 String으로 변경하여 View와 Domain 계층 분리
+    - 도메인 객체 생성 책임을 Application으로 이동하여 계층 간 의존성 최소화
