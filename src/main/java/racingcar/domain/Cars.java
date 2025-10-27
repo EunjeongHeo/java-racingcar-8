@@ -16,6 +16,16 @@ public class Cars {
         this.cars = mapToCars(names);
     }
 
+    public List<Car> getCars() {
+        return List.copyOf(cars);
+    }
+
+    public void race(MoveStrategy strategy) {
+        for (Car car : cars) {
+            car.move(strategy);
+        }
+    }
+
     private List<String> parseToList(String input) {
         return Arrays.stream(input.split(","))
                 .map(String::trim)
@@ -48,9 +58,4 @@ public class Cars {
                 .toList();
     }
 
-    public void race(MoveStrategy strategy) {
-        for (Car car : cars) {
-            car.move(strategy);
-        }
-    }
 }
