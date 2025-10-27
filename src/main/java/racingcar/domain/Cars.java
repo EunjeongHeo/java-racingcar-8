@@ -50,7 +50,7 @@ public class Cars {
     }
 
     private List<String> parseToList(String input) {
-        return Arrays.stream(input.split(","))
+        return Arrays.stream(input.split(",", -1))
                 .map(String::trim)
                 .toList();
     }
